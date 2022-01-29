@@ -8,12 +8,29 @@
 import SwiftUI
 
 struct ContentView: View {
+
     
-    var emojis = ["🐶","🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐻‍❄️", "🐨", "🐯", "🦁", ]
-    @State var emojiCount = 10
+    var defaultEmojis = ["😀", "😃", "😄", "😁", "😆", "😅", "😂", "🤣", "🥲", "☺️", "😊", "😇"]
+    
+    var animalEmojis = ["🐶","🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐻‍❄️", "🐨", "🐯", "🦁", ]
+    
+    var vehicleEmojis = ["🚗", "🚕", "🚙", "🚌", "🚎", "🏎", "🚓", "🚑", "🚒", "🚐", "🛻", "🚚", "🚛", "🚜"]
+    
+    var fruitEmojis = ["🍏", "🍎", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🫐", "🍈", "🍒", "🍑", "🥭", "🍍"]
+    
+    @State var emojis: [String]
+    @State var emojiCount: Int
+    
+    init() {
+        self.emojis = defaultEmojis.shuffled()
+        self.emojiCount = 8
+    }
     
     var body: some View {
         VStack {
+            Text("Memorize!!!")
+                .font(.largeTitle)
+                .foregroundColor(.blue)
             ScrollView{
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))]) {
                     ForEach(emojis[0..<emojiCount], id: \.self) { emoji in
@@ -25,8 +42,17 @@ struct ContentView: View {
             Spacer()
             HStack {
                 remove
-                Spacer()
+                .padding(.trailing)
+                ScrollView(.horizontal) {
+                    HStack(spacing: 20) {
+                        defaultTheme
+                        animalTheme
+                        vehicleTheme
+                        fruitTheme
+                    }
+                }
                 add
+                .padding(.leading)
             }
             .padding(.horizontal)
             .font(.largeTitle)
@@ -52,6 +78,54 @@ struct ContentView: View {
         }, label: {
             Image(systemName: "plus.circle")
         })
+    }
+    
+    var defaultTheme: some View {
+        VStack {
+            Button(action: {
+                selectTheme(defaultEmojis)
+            }, label: {
+                Image(systemName: "face.smiling")
+            })
+            Text("Face").font(.body)
+        }
+    }
+    
+    var animalTheme: some View {
+        VStack {
+            Button(action: {
+                selectTheme(animalEmojis)
+            }, label: {
+                Image(systemName: "pawprint")
+            })
+            Text("Animal").font(.body)
+        }
+    }
+    
+    var vehicleTheme: some View {
+        VStack {
+            Button(action: {
+                selectTheme(vehicleEmojis)
+            }, label: {
+                Image(systemName: "car")
+            })
+            Text("Vehicle").font(.body)
+        }
+    }
+    
+    var fruitTheme: some View {
+        VStack {
+            Button(action: {
+                selectTheme(fruitEmojis)
+            }, label: {
+                Image(systemName: "applelogo")
+            })
+            Text("Fruit").font(.body)
+        }
+    }
+    
+    private func selectTheme(_ theme: [String]) {
+        emojis = theme.shuffled()
     }
 }
 
@@ -91,6 +165,6 @@ struct CardView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-.previewInterfaceOrientation(.portraitUpsideDown)
+.previewInterfaceOrientation(.portrait)
     }
 }
