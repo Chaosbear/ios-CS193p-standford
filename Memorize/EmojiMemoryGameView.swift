@@ -42,7 +42,7 @@ struct EmojiMemoryGameView: View {
                         .foregroundColor(.white)
                 })
                 .background( RoundedRectangle(cornerRadius: 10)
-                    .fill(game.color)
+                                .fill(.gray)
                 )
                 
             }

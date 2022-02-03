@@ -13,12 +13,12 @@ struct Theme {
     let name: String
     let symbolName: String
     let emojis: [String]
-    let color: UIColor
+    let color: String
     var numberOfPairs: Int
     
     
     
-    init(name: String, symbolName: String, emojis: [String], color: UIColor, numberOfPairs: Int) {
+    init(name: String, symbolName: String, emojis: [String], color: String, numberOfPairs: Int) {
         self.name = name
         self.symbolName = symbolName
         self.emojis = emojis
@@ -34,7 +34,7 @@ struct Theme {
         "🚲","🚂","🚁","🚜","🏎","🚑","🚓","🚒","✈️","🚀","⛵",
         "🛸","🚌","🏍","🛺","🚠","🛵","🚗","🚚","🚇","🛻","🚝"
         ],
-        color: .blue,
+        color: "blue",
         numberOfPairs: 8)
     
     static let sports = Theme(
@@ -44,7 +44,7 @@ struct Theme {
         "⚽️","🏀","🏈","⚾️","🏓","🏏","🥊","🏉","🎾","🏒","🏌️‍♂️",
         "🏇🏻","🏄‍♂️","🚴‍♀️","🏊‍♂️"
         ],
-        color: .yellow,
+        color: "yellow",
         numberOfPairs: 9)
     
     static let faces = Theme(
@@ -54,22 +54,22 @@ struct Theme {
         "😃","😆","😇","🥰","🤪","🥳","😢","🥸","🤯","😱","🥶",
         "🥵","🧐","😋","😉","😂"
         ],
-        color: .red,
+        color: "red",
         numberOfPairs: 10)
     
     static let halloween = Theme(
         name: "Halloween",
         symbolName: "wand.and.stars.inverse",
         emojis: ["👻","🎃","🕷","🕸","🧟"],
-        color: .orange,
-        numberOfPairs: 5
+        color: "orange",
+        numberOfPairs: 10
     )
     
     static let things = Theme(
         name: "Things",
         symbolName: "hammer",
         emojis: ["🧶","🎩","🕶","🧵","👑", "👔", "👖", "💍", "🎧"],
-        color: .cyan,
+        color: "pink",
         numberOfPairs: 6)
     
     static let allThemes: [Theme] = [
