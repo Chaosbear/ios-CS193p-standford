@@ -61,14 +61,14 @@
 		F86DB929279E83FE008A4B54 /* Memorize */ = {
 			isa = PBXGroup;
 			children = (
+				962D46CF27A267D60045CB5E /* AspectVGrid.swift */,
+				F86DB92E279E8402008A4B54 /* Assets.xcassets */,
+				962D46D327A295720045CB5E /* Cardify.swift */,
+				F82F4F3C279FD70700F696D5 /* EmojiMemoryGame.swift */,
+				9675F65327A1BDD400B39126 /* EmojiMemoryGameView.swift */,
 				9675F65527A1BE2700B39126 /* MemorizeApp.swift */,
 				F82F4F3A279FD4FE00F696D5 /* MemoryGame.swift */,
 				962D46D127A288540045CB5E /* Pie.swift */,
-				962D46D327A295720045CB5E /* Cardify.swift */,
-				F82F4F3C279FD70700F696D5 /* EmojiMemoryGame.swift */,
-				962D46CF27A267D60045CB5E /* AspectVGrid.swift */,
-				9675F65327A1BDD400B39126 /* EmojiMemoryGameView.swift */,
-				F86DB92E279E8402008A4B54 /* Assets.xcassets */,
 				F86DB930279E8402008A4B54 /* Preview Content */,
 			);
 			path = Memorize;
