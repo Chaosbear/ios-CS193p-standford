@@ -9,10 +9,10 @@ import SwiftUI
 
 @main
 struct MemorizeApp: App {
-    private let game = SetGame()
+    let game = SunSetGame()
     var body: some Scene {
         WindowGroup {
-            SetGameView(game: game)
+            SunSetGameView(game: game)
         }
     }
 }
