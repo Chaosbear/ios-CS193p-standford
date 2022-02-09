@@ -64,7 +64,7 @@ struct ThemeChooser: View {
     }
   }
 
-  private func getDestination(for theme: Theme) -> some View{
+  private func getDestination(for theme: Theme) -> some View {
     if games[theme] == nil {
       let newGame = EmojiMemoryGame(theme: theme)
       games.updateValue(newGame, forKey: theme)
@@ -81,7 +81,7 @@ struct ThemeChooser: View {
     Button {
       store.insertTheme(named: "new")
       themeToEdit = store.themes.first
-    } label : {
+    } label: {
       Image(systemName: "plus")
         .foregroundColor(.blue)
     }
@@ -103,24 +103,16 @@ struct ThemeChooser: View {
   }
 
 
-  //MARK: - Updating Game
+  // MARK:- Updating Game
 
   private func updateGames(to newThemes: [Theme]) {
-    store.themes.filter { $0.emojis.count >= 2}.forEach { theme in
+    store.themes.filter { $0.emojis.count >= 2 }.forEach { theme in
       if !newThemes.contains(theme) {
         store.themes.remove(theme)
       }
     }
   }
 }
-
-
-
-
-
-
-
-
 
 
 struct ThemeChooser_Previews: PreviewProvider {
