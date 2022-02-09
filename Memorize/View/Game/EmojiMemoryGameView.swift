@@ -13,7 +13,7 @@ struct EmojiMemoryGameView: View {
   var body: some View {
     VStack {
       Text("score: \(game.score)")
-      ScrollView {
+
         AspectVGrid(items: game.cards, aspectRatio: 2 / 3) { card in
           if card.isMatched && !card.isFaceUp {
             Rectangle().opacity(0)
@@ -25,7 +25,6 @@ struct EmojiMemoryGameView: View {
               }
           }
         }
-      }
       .foregroundColor(Color(rgbaColor: game.chosenTheme.color))
     }
     .padding()
