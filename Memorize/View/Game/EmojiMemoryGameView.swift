@@ -14,10 +14,12 @@ struct EmojiMemoryGameView: View {
     VStack {
       Text("score: \(game.score)")
       ScrollView {
-        LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]) {
-          ForEach(game.cards) { card in
+        AspectVGrid(items: game.cards, aspectRatio: 2 / 3) { card in
+          if card.isMatched && !card.isFaceUp {
+            Rectangle().opacity(0)
+          } else {
             CardView(card: card)
-              .aspectRatio(2 / 3, contentMode: .fit)
+              .padding(4)
               .onTapGesture {
                 game.choose(card)
               }
@@ -43,21 +45,32 @@ struct EmojiMemoryGameView: View {
 }
 
 struct CardView: View {
-  var card: MemoryGame<String>.Card
+  let card: EmojiMemoryGame.Card
 
   var body: some View {
-    ZStack {
-      let shape = RoundedRectangle(cornerRadius: 20)
-      if card.isFaceUp {
-        shape.fill().foregroundColor(.white)
-        shape.strokeBorder(lineWidth: 3)
-        Text(card.content).font(.largeTitle)
-      } else if card.isMatched {
-        shape.opacity(0)
-      } else {
-        shape.fill()
+    GeometryReader { geometry in
+      ZStack {
+        Text(card.content)
+          .rotationEffect(Angle.degrees(card.isMatched ? 360 : 0))
+          .animation(Animation.linear(duration: 1).repeatForever(autoreverses: false))
+          .font(Font.system(size: DrawingConstants.fontSize))
+          .scaleEffect(scale(thatFits: geometry.size))
       }
+      .cardify(isFaceUp: card.isFaceUp)
     }
+  }
+
+  private func scale(thatFits size: CGSize) -> CGFloat {
+    min(size.width, size.height) / (DrawingConstants.fontSize / DrawingConstants.fontScale)
+  }
+
+  private func font(in size: CGSize) -> Font {
+    Font.system(size: min(size.width, size.height) * DrawingConstants.fontScale)
+  }
+
+  private struct DrawingConstants {
+    static let fontScale: CGFloat = 0.7
+    static let fontSize: CGFloat = 32
   }
 }
 
