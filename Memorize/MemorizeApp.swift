@@ -8,14 +8,14 @@
 import SwiftUI
 
 @main
-struct Memorize3_0App: App {
-    @StateObject var themeStore = ThemeStore(named: "default")
-    
-    var body: some Scene {
-        WindowGroup {
-//            ThemeChooser(store: themeStore)
-            ThemeChooser()
-                .environmentObject(themeStore)
-        }
+struct MemorizeApp: App {
+  @StateObject var themeStore = ThemeStore(named: "default")
+
+  var body: some Scene {
+    WindowGroup {
+      //            ThemeChooser(store: themeStore)
+      ThemeChooser()
+        .environmentObject(themeStore)
     }
+  }
 }

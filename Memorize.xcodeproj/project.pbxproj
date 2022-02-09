@@ -140,6 +140,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F86DB935279E8402008A4B54 /* Build configuration list for PBXNativeTarget "Memorize" */;
 			buildPhases = (
+				961EAA8227B35FE4002873DC /* ShellScript */,
 				F86DB923279E83FE008A4B54 /* Sources */,
 				F86DB924279E83FE008A4B54 /* Frameworks */,
 				F86DB925279E83FE008A4B54 /* Resources */,
@@ -197,6 +198,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		961EAA8227B35FE4002873DC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nPATH=/opt/homebrew/bin:$PATH\nif [ -f ~/com.raywenderlich.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --no-cache --config ~/com.raywenderlich.swiftlint.yml\n  fi\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F86DB923279E83FE008A4B54 /* Sources */ = {
